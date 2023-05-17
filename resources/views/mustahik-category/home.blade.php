@@ -37,7 +37,10 @@
                             <td>{{ $value->category_name }}</td>
                             <td>{{ $value->description }}</td>
                             <td>{{ $value->percentage }}%</td>
-                            <td>Otto</td>
+                            <td>
+                                <a href="/deletedatapymenttype/{{ $value->id }}" class="btn btn-danger">Delete</a>
+                                <a href="/tampildatapymenttype/{{ $value->id }}" class="btn btn-info">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
