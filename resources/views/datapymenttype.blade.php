@@ -33,7 +33,7 @@
                             <th scope="row">{{ $n+1 }}</th>
                             <td>{{ $value->payment_type_name }}</td>
                             <td>
-                                <a href="/deletedatapymenttype/{{ $value->id }}" class="btn btn-danger">Delete</a>
+                                <a onclick="confirmDelete('/deletedatapymenttype/{{ $value->id }}')" class="btn btn-danger text-white">Delete</a>
                                 <a href="/tampildatapymenttype/{{ $value->id }}" class="btn btn-info">Edit</a>
                             </td>
                         </tr>
@@ -44,4 +44,17 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('custom-js')
+<script>
+    function confirmDelete(url){
+        var ask = window.confirm("Are you sure you want to delete this record?");
+        if (ask) {
+            window.alert("This post was successfully deleted.");
+            window.location.href = url;
+
+        }
+    }
+</script>
 @endsection

@@ -21,9 +21,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body{
+        body, .dropdown-item{
             font-family: 'Montserrat', sans-serif !important;
-            font-size: 12pt !important;
+            font-size: 14px !important;
         }
     </style>
     @yield('custom-css')
@@ -33,9 +33,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span class="font-weight-bold">
-                        My<span class="text-success">{{ config('app.name', 'Laravel') }}</span>
-                    </span>
+                    <span style="font-weight: bold; font-size: 16px;">My</span><span class="text-success" style="font-weight: bold; font-size: 16px;">Zakat</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -104,5 +102,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('custom-js')
 </body>
 </html>
