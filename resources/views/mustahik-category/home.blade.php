@@ -26,7 +26,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Category Name</th>
                             <th scope="col" style="width: 55%;">Description</th>
-                            <th scope="col">Percentage</th>
+                            <th scope="col">Percentage (used: {{$usedPercentage}}%)</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
