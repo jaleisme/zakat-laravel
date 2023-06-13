@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mustahik;
+use App\Models\MustahikCategory;
 use Illuminate\Http\Request;
 
 class MustahikController extends Controller
@@ -14,7 +15,12 @@ class MustahikController extends Controller
      */
     public function index()
     {
-        return Mustahik::all();
+        $data = Mustahik::select('mustahik.*', 'mustahik_category.category_name')
+            ->join('mustahik_category', 'mustahik_category.id', '=', 'mustahik.mustahik_category_id')
+            ->groupBy('mustahik.id', 'mustahik.mustahik_category_id', 'mustahik.fullname', 'mustahik.address', 'mustahik_category.category_name')
+            ->get();
+        // dd($data);
+        return view('mustahik.home', compact(['data']));
     }
 
     /**
@@ -24,7 +30,8 @@ class MustahikController extends Controller
      */
     public function create()
     {
-        //
+        $mustahikCategory = MustahikCategory::all();
+        return view('mustahik.create', compact(['mustahikCategory']));
     }
 
     /**
@@ -35,7 +42,13 @@ class MustahikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mustahik::create([
+            'mustahik_category_id' => $request->mustahik_category_id,
+            'address' => $request->address,
+            'fullname' => $request->fullname
+        ]);
+
+        return redirect()->route('mustahik.index')->with('success','User created successfully.');
     }
 
     /**
@@ -57,7 +70,9 @@ class MustahikController extends Controller
      */
     public function edit(Mustahik $mustahik)
     {
-        //
+        $mustahik = Mustahik::find($mustahik)->first();
+        $mustahikCategory = MustahikCategory::all();
+        return view('mustahik.edit', compact(['mustahik', 'mustahikCategory']));
     }
 
     /**
@@ -69,7 +84,15 @@ class MustahikController extends Controller
      */
     public function update(Request $request, Mustahik $mustahik)
     {
-        //
+        $data = Mustahik::findOrFail($mustahik->id);
+        if($data){
+            $data->update([
+                'mustahik_category_id' => $request->mustahik_category_id,
+                'address' => $request->address,
+                'fullname' => $request->fullname
+            ]);
+        }
+        return redirect()->route('mustahik.index');
     }
 
     /**
@@ -80,6 +103,10 @@ class MustahikController extends Controller
      */
     public function destroy(Mustahik $mustahik)
     {
-        //
+        // dd($mustahik);
+        $data = Mustahik::findOrFail($mustahik->id)->delete();
+        if($data){
+            return redirect()->route('mustahik.index');
+        }
     }
 }

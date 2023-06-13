@@ -70,7 +70,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mustahik</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Mustahik</a>
+                                    <a class="dropdown-item" href="{{ route('mustahik.index') }}">Mustahik</a>
                                     <a class="dropdown-item" href="{{ route('mustahik-category.index') }}">Mustahik Category</a>
                                 </div>
                             </li>

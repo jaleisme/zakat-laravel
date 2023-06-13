@@ -9,4 +9,6 @@ class Mustahik extends Model
 {
     use HasFactory;
     protected $table = 'mustahik';
+    public $timestamps = false;
+    protected $fillable = ['mustahik_category_id', 'fullname', 'address'];
 }
