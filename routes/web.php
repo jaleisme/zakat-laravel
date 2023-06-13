@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MustahikController;
 use App\Http\Controllers\MustahikCategoryController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/mustahik', MustahikController::class)->middleware('auth');
 Route::resource('/mustahik-category', MustahikCategoryController::class)->middleware('auth');
 Route::resource('/payment-type', PaymentTypeController::class)->middleware('auth');
+Route::resource('/payment', PaymentController::class)->middleware('auth');
 
 // Payment Type
 // Route::get('/payment-type',[PaymentTypeController::class, 'payment_type'])->name('payment-type');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 03:08 PM
+-- Generation Time: Jun 13, 2023 at 11:37 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -87,6 +87,13 @@ CREATE TABLE `mustahik` (
   `address` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mustahik`
+--
+
+INSERT INTO `mustahik` (`id`, `mustahik_category_id`, `fullname`, `address`) VALUES
+(2, 3, 'James', 'Babakan Avenue');
+
 -- --------------------------------------------------------
 
 --
@@ -99,6 +106,20 @@ CREATE TABLE `mustahik_category` (
   `description` tinytext NOT NULL,
   `percentage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mustahik_category`
+--
+
+INSERT INTO `mustahik_category` (`id`, `category_name`, `description`, `percentage`) VALUES
+(3, 'Amil', 'People whom dedicate themselves to manage zakat within their area', 10),
+(5, 'Poor', 'People who financially struggled to fulfill their needs', 15),
+(6, 'Muallaf', 'Individuals who are non-Muslims or non-Muslims who have the hope of converting to Islam or those who are new to Islam whose faith still needs to be supported and reinforced', 5),
+(7, 'Riqab', 'Slaves whose freedom was conditional on a payment.', 15),
+(8, 'Gharimin', 'One who is in debt and needs assistance to meet his/her basic needs.', 10),
+(9, 'Fii Sabilillah', 'One who strives in the cause of Allah for the betterment of the community.', 10),
+(10, 'Ibnussabil', 'Stranded travellers on a permissible journey.', 15),
+(11, 'Fakir', 'One who has neither material possession nor means of livelihood; one who suffers, and has no means to sustain his/her daily needs.', 20);
 
 -- --------------------------------------------------------
 
@@ -134,9 +155,9 @@ CREATE TABLE `payment` (
   `id` int(10) UNSIGNED NOT NULL,
   `muzakki_id` int(10) UNSIGNED NOT NULL,
   `payment_type_id` int(10) UNSIGNED NOT NULL,
+  `amil_id` bigint(20) UNSIGNED NOT NULL,
   `amount` int(11) NOT NULL,
-  `number_of_person` int(11) NOT NULL,
-  `infaq` int(11) NOT NULL
+  `number_of_person` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -149,6 +170,14 @@ CREATE TABLE `payment_type` (
   `id` int(11) UNSIGNED NOT NULL,
   `payment_type_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_type`
+--
+
+INSERT INTO `payment_type` (`id`, `payment_type_name`) VALUES
+(5, 'Money'),
+(6, 'Rice');
 
 -- --------------------------------------------------------
 
@@ -172,7 +201,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@admin.com', NULL, '$2y$10$K55wbch3a3Ayn863yaIEXO73dgsSXmehwOC3eVi2M2FTSxT6nld1.', NULL, '2023-05-09 21:13:05', '2023-05-09 21:13:05');
+(1, 'admin', 'admin@admin.com', NULL, '$2y$10$K55wbch3a3Ayn863yaIEXO73dgsSXmehwOC3eVi2M2FTSxT6nld1.', '4rW2zjFpHALwknvV4tzPjFzw557F4QFV6BNxbpAqXPKvlXfEqDBJ9gvPUzqh', '2023-05-09 21:13:05', '2023-05-09 21:13:05');
 
 --
 -- Indexes for dumped tables
@@ -229,7 +258,8 @@ ALTER TABLE `password_resets`
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `muzakki_id` (`muzakki_id`),
-  ADD KEY `payment_type_id` (`payment_type_id`);
+  ADD KEY `payment_type_id` (`payment_type_id`),
+  ADD KEY `amil_id` (`amil_id`);
 
 --
 -- Indexes for table `payment_type`
@@ -270,31 +300,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `mustahik`
 --
 ALTER TABLE `mustahik`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mustahik_category`
 --
 ALTER TABLE `mustahik_category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `muzakki`
 --
 ALTER TABLE `muzakki`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_type`
 --
 ALTER TABLE `payment_type`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -323,7 +353,8 @@ ALTER TABLE `mustahik`
 --
 ALTER TABLE `payment`
   ADD CONSTRAINT `FK_payment_muzakki` FOREIGN KEY (`muzakki_id`) REFERENCES `muzakki` (`id`),
-  ADD CONSTRAINT `FK_payment_payment_type` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`);
+  ADD CONSTRAINT `FK_payment_payment_type` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`),
+  ADD CONSTRAINT `FK_payment_users` FOREIGN KEY (`amil_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

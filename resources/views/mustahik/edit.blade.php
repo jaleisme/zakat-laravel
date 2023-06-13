@@ -28,7 +28,7 @@
                     <textarea required class="form-control" id="description" rows="3" name="address">{{ $mustahik->address }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="mustahik_category_id">Full Name</label>
+                    <label for="mustahik_category_id">Category</label>
                     <select required type="text" class="form-control" id="mustahik_category_id" name="mustahik_category_id">
                         <option disabled>Select One</option>
                         @foreach($mustahikCategory as $mc)

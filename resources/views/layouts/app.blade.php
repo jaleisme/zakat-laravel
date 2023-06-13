@@ -77,8 +77,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payment</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Payment</a>
-                                    <a class="dropdown-item" href="/payment-type">Payment Type</a>
+                                    <a class="dropdown-item" href="{{ route('payment.index') }}">Payment</a>
+                                    <a class="dropdown-item" href="{{ route('payment-type.index') }}">Payment Type</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
