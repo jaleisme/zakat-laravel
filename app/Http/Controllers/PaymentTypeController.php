@@ -8,41 +8,95 @@ use Illuminate\Http\Request;
 
 class PaymentTypeController extends Controller
 {
-    public function payment_type(){
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $data = Payment_type::all();
-        return view('datapymenttype', compact('data'));
+        return view('payment-type.home', compact(['data']));
     }
 
-    public function tambahdatapymenttype(){
-
-        $data = Payment_type::all();
-        return view('tambahdatapymenttype', compact('data'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('payment-type.create');
     }
 
-    public function insertdatapymenttype(Request $request){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        Payment_type::create([
+            'payment_type_name' => $request->payment_type_name,
+        ]);
 
-        //dd($request->all());
-        Payment_type::create($request->all());
-        return redirect()->route('payment-type');
+        return redirect()->route('payment-type.index')->with('success','User created successfully.');
     }
 
-    public function tampildatapymenttype($id){
-
-        $data = Payment_type::find($id);
-        //dd($data);
-        return view ('tampildatapymenttype', compact('data'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Payment_type  $paymentType
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Payment_type $paymentType)
+    {
+        //
     }
 
-    public function editdatapymenttype(Request $request, $id){
-        $data = Payment_type::find($id);
-        $data->update($request->all());
-        return redirect()->route('payment-type');
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Payment_type  $paymentType
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Payment_type $paymentType)
+    {
+        $paymentType = Payment_type::find($paymentType)->first();
+        return view('payment-type.edit', compact(['paymentType']));
     }
 
-    public function deletedatapymenttype($id){
-        $data = Payment_type::find($id);
-        $data->delete();
-        return redirect()->route('payment-type');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Payment_type  $paymentType
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Payment_type $paymentType)
+    {
+        $data = Payment_type::findOrFail($paymentType->id);
+        if($data){
+            $data->update([
+                'payment_type_name' => $request->payment_type_name,
+            ]);
+        }
+        return redirect()->route('payment-type.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Payment_type  $paymentType
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Payment_type $paymentType)
+    {
+        // dd($paymentType);
+        $data = Payment_type::findOrFail($paymentType->id)->delete();
+        if($data){
+            return redirect()->route('payment-type.index');
+        }
     }
 }
