@@ -15,15 +15,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body, .dropdown-item{
             font-family: 'Montserrat', sans-serif !important;
-            font-size: 14px !important;
+            font-size: 12px !important;
         }
     </style>
     @yield('custom-css')
@@ -102,6 +102,16 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        function confirmDelete(url){
+            var ask = window.confirm("Are you sure you want to delete this record?");
+            if (ask) {
+                window.alert("This post was successfully deleted.");
+                window.location.href = url;
+
+            }
+        }
+    </script>
     @yield('custom-js')
 </body>
 </html>

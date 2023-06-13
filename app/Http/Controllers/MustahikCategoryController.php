@@ -25,7 +25,7 @@ class MustahikCategoryController extends Controller
      */
     public function create()
     {
-
+        return view('mustahik-category.create');
     }
 
     /**
@@ -64,7 +64,8 @@ class MustahikCategoryController extends Controller
      */
     public function edit(MustahikCategory $mustahikCategory)
     {
-        //
+        $mustahikCategory = MustahikCategory::find($mustahikCategory)->first();
+        return view('mustahik-category.edit', compact(['mustahikCategory']));
     }
 
     /**
@@ -76,7 +77,15 @@ class MustahikCategoryController extends Controller
      */
     public function update(Request $request, MustahikCategory $mustahikCategory)
     {
-        //
+        $data = MustahikCategory::findOrFail($mustahikCategory->id);
+        if($data){
+            $data->update([
+                'category_name' => $request->category_name,
+                'description' => $request->description,
+                'percentage' => $request->percentage
+            ]);
+        }
+        return redirect()->route('mustahik-category.index');
     }
 
     /**
@@ -87,6 +96,10 @@ class MustahikCategoryController extends Controller
      */
     public function destroy(MustahikCategory $mustahikCategory)
     {
-        //
+        // dd($mustahikCategory);
+        $data = MustahikCategory::findOrFail($mustahikCategory->id)->delete();
+        if($data){
+            return redirect()->route('mustahik-category.index');
+        }
     }
 }

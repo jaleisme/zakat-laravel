@@ -45,16 +45,3 @@
     </div>
 </div>
 @endsection
-
-@section('custom-js')
-<script>
-    function confirmDelete(url){
-        var ask = window.confirm("Are you sure you want to delete this record?");
-        if (ask) {
-            window.alert("This post was successfully deleted.");
-            window.location.href = url;
-
-        }
-    }
-</script>
-@endsection

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6">
-            <h3>Mustahik Category</h3>
+            <h3 class="font-weight-bold">Mustahik Category</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0 bg-white">
                     <li class="breadcrumb-item"><a href="/home">Home</a></li>
@@ -13,7 +13,7 @@
             </nav>
         </div>
         <div class="col-12 col-md-6">
-            <button href="" class="btn btn-primary d-block d-md-inline-block float-md-right mt-3 mb-5 my-md-0" data-toggle="modal" data-target="#exampleModal">Add Record</button>
+        <a href="{{ route('mustahik-category.create') }}" class="btn btn-primary d-block d-md-inline-block float-md-right mt-3 mb-5 my-md-0">Add Record</a>
         </div>
     </div>
 
@@ -38,8 +38,15 @@
                             <td>{{ $value->description }}</td>
                             <td>{{ $value->percentage }}%</td>
                             <td>
-                                <a href="/deletedatapymenttype/{{ $value->id }}" class="btn btn-danger">Delete</a>
-                                <a href="/tampildatapymenttype/{{ $value->id }}" class="btn btn-info">Edit</a>
+                                <form method="POST" action="{{route('mustahik-category.destroy', $value->id)}}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-danger delete-user" value="Delete">
+                                        <a href="{{route('mustahik-category.edit', $value->id)}}" class="btn btn-warning">Edit</a>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -49,43 +56,17 @@
         </div>
     </div>
 </div>
+@endsection
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="{{ route('mustahik-category.store') }}" method="POST">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Record</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Category Name</label>
-                        <input required type="text" class="form-control" id="name" placeholder="Ex. Fakir" name="category_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea required class="form-control" id="description" rows="3" name="description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Percentage</label>
-                        <div class="input-group mb-3">
-                            <input required type="number" class="form-control" id="percentage" placeholder="Ex. 30" min="0" max="100" name="percentage">
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2">%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
+@section('custom-js')
+<script>
+    $('.delete-user').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
 @endsection
