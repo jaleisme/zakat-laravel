@@ -85,8 +85,15 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        $payment = Payment::find($payment)->first();
-        return view('payment.edit', compact(['payment']));
+        $data = Payment::select('payment.*', 'muzakki.fullname', 'muzakki.address', 'payment_type.payment_type_name', 'users.name')
+            ->join('muzakki', 'muzakki.id', '=', 'payment.muzakki_id')
+            ->join('payment_type', 'payment_type.id', '=', 'payment.payment_type_id')
+            ->join('users', 'users.id', '=', 'payment.amil_id')
+            ->groupBy('payment.id', 'payment.muzakki_id', 'payment.payment_type_id', 'payment.amil_id', 'payment.amount', 'payment.number_of_person', 'muzakki.fullname', 'muzakki.address', 'payment_type.payment_type_name', 'users.name')
+            ->where('payment.id', $payment->id)
+            ->first();
+        $paymentType = Payment_type::all();
+        return view('payment.edit', compact(['data', 'paymentType']));
     }
 
     /**
@@ -98,12 +105,21 @@ class PaymentController extends Controller
      */
     public function update(Request $request, Payment $payment)
     {
+        $muzakki = Muzakki::findOrFail($request->muzakki_id);
+        $muzakki = $muzakki->update([
+            'fullname' => $request->fullname,
+            'address' => $request->address
+        ]);
+
+
         $data = Payment::findOrFail($payment->id);
         if($data){
             $data->update([
-                'category_name' => $request->category_name,
-                'description' => $request->description,
-                'percentage' => $request->percentage
+                'muzakki_id' => $request->muzakki_id,
+                'payment_type_id' => $request->payment_type_id,
+                'amil_id' => Auth::user()->id,
+                'amount' => $request->amount,
+                'number_of_person' => $request->number_of_person
             ]);
         }
         return redirect()->route('payment.index');

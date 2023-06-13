@@ -45,7 +45,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="number_of_person">Number of Person</label>
-                            <input required type="text" class="form-control" id="number_of_person" placeholder="Ex. " name="number_of_person">
+                            <input required type="text" class="form-control" id="number_of_person" placeholder="Ex. 1" name="number_of_person">
                         </div>
                     </div>
                     <div class="col-6">
