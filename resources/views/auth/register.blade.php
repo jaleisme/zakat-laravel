@@ -62,10 +62,14 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 offset-md-4 justify-content-between">
+                                <button type="submit" class="button btn-block btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <div class="text-center mt-3">
+                                    If you already have an account,
+                                    <a href="/login" class="text-decoration-none text-success font-weight-bold">Click Here</a>
+                                </div>
                             </div>
                         </div>
                     </form>

@@ -6,6 +6,9 @@
         font-family: 'Montserrat', 'sans-serif';
         font-size: 14px;
     }
+    .text-success{
+        color: #019147 !important;
+    }
     /* Outline None */
     .form-control:hover, .form-control:focus, .form-control:active, .form-control:active:focus,
     .form-control .form-control:not(:disabled):not(.disabled):active,
@@ -80,10 +83,13 @@
 
                         <div class="row mb-0">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-block btn-primary">
+                                <button type="submit" class="button btn btn-block btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
+                                <div class="text-center mt-3">
+                                    If you doesn't have any account,
+                                    <a href="/register" class="text-decoration-none text-success font-weight-bold">Click Here</a>
+                                </div>
                             </div>
                         </div>
                     </form>

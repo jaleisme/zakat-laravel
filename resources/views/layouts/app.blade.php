@@ -25,6 +25,26 @@
             font-family: 'Montserrat', sans-serif !important;
             font-size: 12px !important;
         }
+        .bg-success{
+            background-color: #019147 !important;
+        }
+        .text-success{
+            color: #019147 !important;
+        }
+        .btn-success{
+            background-color: #019147 !important;
+        }
+        .button{
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 16px 24px;
+        }
+        .btn-warning, .btn-primary{
+            background-color: #FF9823 !important;
+            color: #ffffff !important;
+            border: 1px solid #FF9823;
+        }
     </style>
     @yield('custom-css')
 </head>
@@ -33,7 +53,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span style="font-weight: bold; font-size: 16px;">My</span><span class="text-success" style="font-weight: bold; font-size: 16px;">Zakat</span>
+                    <div style="font-weight: 800; font-size: 24px;">My<span class="text-success">Zakat</span></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -51,13 +71,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="button btn btn-warning" href="{{ route('login') }}">Login | Register</a>
                                 </li>
                             @endif
                         @else

@@ -44,7 +44,7 @@
 
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-danger delete-user" value="Delete">
-                                        <a href="{{route('mustahik-category.edit', $value->id)}}" class="btn btn-warning">Edit</a>
+                                        <a href="{{route('mustahik-category.edit', $value->id)}}" class="btn btn-info">Edit</a>
                                     </div>
                                 </form>
                             </td>
