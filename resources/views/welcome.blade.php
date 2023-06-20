@@ -11,23 +11,6 @@
         color: #333333;
     }
 
-    .jumbotron{
-        background:
-        /* top, transparent black, faked with gradient */
-        linear-gradient(
-          rgba(0, 0, 0, 0.5),
-          rgba(0, 0, 0, 0.5)
-        ),
-        /* bottom, image */
-        url('/bg-landing.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        color: #ffffff;
-        height: 70vh;
-        margin-top: -48px;
-    }
-
     .bg-success{
         background-color: #019147 !important;
     }
@@ -94,17 +77,11 @@
     <!-- Zakat Detail -->
     <div class="card" style="margin: 48px 0px;">
         <div class="row" style="margin-bottom: 24px;">
-            <div class="col-10 p-0">
-                <h2 class="font-weight-bold">Haven't heard about Zakat Al-Fitr?</h2>
-            </div>
-            <div class="col-2 p-0">
-                <a href="https://baznas.go.id/zakat" class="button btn btn-warning float-right">Read More</a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-6 pl-0">
+                <h2 class="font-weight-bold">Haven't heard about Zakat Al-Fitr?</h2>
                 <p class="text-justify" style="margin-bottom: 16px;">"Those who believe, do righteous deeds, establish prayer, and give zakah, will have their reward with their Lord; and they will have no fear, nor will they grieve." <br>Al-Baqarah : 277.</p>
-                <p class="text-justify">As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth to help the needy. It is a mandatory charitable contribution, often considered to be a tax. The payment and disputes on zakat have played a major role in the history of Islam, notably during the Ridda wars. Zakat on wealth is based on the value of all of one's possessions. It is customarily 2.5% (or 1/4) of a Muslim's total savings and wealth above a minimum amount known as nisab each lunar year, but Islamic scholars differ on how much nisab is and other aspects of zakat. According to Islamic doctrine, the collected amount should be paid to the poor and the needy, Zakat collectors, orphans, widows, those to be freed from slavery, old-aged peoples who can't work to feed themselves, those in debt, in the cause of Allah and to benefit the stranded traveller.</p>
+                <p class="text-justify" style="margin-bottom: 16px;">As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth to help the needy. It is a mandatory charitable contribution, often considered to be a tax. The payment and disputes on zakat have played a major role in the history of Islam, notably during the Ridda wars. Zakat on wealth is based on the value of all of one's possessions. It is customarily 2.5% (or 1/4) of a Muslim's total savings and wealth above a minimum amount known as nisab each lunar year, but Islamic scholars differ on how much nisab is and other aspects of zakat. According to Islamic doctrine, the collected amount should be paid to the poor and the needy, Zakat collectors, orphans, widows, those to be freed from slavery, old-aged peoples who can't work to feed themselves, those in debt, in the cause of Allah and to benefit the stranded traveller.</p>
+                <a href="https://baznas.go.id/zakat" class="button btn btn-warning">Read More</a>
             </div>
             <div class="col-6 pr-0">
                 <div class="card w-100 h-100 p-4">
@@ -135,6 +112,11 @@
                             <input class="sp-input w-100" type="text" min="0" placeholder="Rice to give" id="riceInput" disabled>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <small>P.s. You don't have to pay BOTH in money and in rice. You should consider choosing one.</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,7 +129,7 @@
                 <h2 class="font-weight-bold">What MyZakat really is?</h2>
                 <p class="text-justify" style="margin: 24px 0px;">As we mentioned earlier, MyZakat is a comprehensive and user-friendly platform designed to revolutionize the way you manage your Zakat contributions. Our system provides a convenient and efficient way to calculate, track, and distribute your Zakat, empowering you to make a meaningful impact on the lives of those in need.</p>
                 <p class="text-justify" style="margin: 24px 0px;">Our goal is to do the hard and complicated works behind Zakat collection and distribution, so the amil can focus more on the technicality of the collection and distribution rather than do everything manually by themselves. If you're interested in using our system, let's get in touch and discuss more about your needs, shall we?</p>
-                <a target="_blank" href="https://wa.me/6285157915115?text=I'm%20interested%20in%20using%20MyZakat!" class="button btn btn-warning text-white">Get In Touch</a>
+                <a target="_blank" href="mailto:jaleisme.id@gmail.com" class="button btn btn-warning text-white">Get In Touch</a>
             </div>
             <div class="col-6">
                 <div class="row mb-4 w-100 text-white">

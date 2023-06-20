@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -49,11 +50,12 @@
     @yield('custom-css')
 </head>
 <body>
+    @if((new \Jenssegers\Agent\Agent())->isDesktop())
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <div style="font-weight: 800; font-size: 24px;">My<span class="text-success">Zakat</span></div>
+                    <div style="font-weight: 800; font-size: 24px;">My<span class="text-success" style="font-weight: 800; font-size: 24px;">Zakat</span></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -71,7 +73,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="button btn btn-warning" href="{{ route('login') }}">Login | Register</a>
+                                    <a class="button btn btn-warning" href="{{ route('login') }}" style="font-size: 12px;">Login | Register</a>
                                 </li>
                             @endif
                         @else
@@ -130,5 +132,18 @@
         }
     </script>
     @yield('custom-js')
+
+    <!-- Mobile Detection -->
+    @elseif((new \Jenssegers\Agent\Agent())->isMobile())
+    <div class="container d-flex align-items-center justify-content-middle bg-success" style="height: 100vh;">
+        <div class="row">
+            <div class="col-12 text-white">
+                <img src="{{ asset('img/mobile-illustration.svg') }}" alt="" class="w-100">
+                <h2 class="font-weight-bold text-center">You're detected using mobile device.</h2>
+                <p style="font-size: 14px; margin-top: 16px;" class="text-justify">To ensure the best possible experience and functionality, we kindly request that you refrain from accessing our website on mobile devices and instead utilize a desktop or laptop computer. Thank you for your understanding, and have a nice day :D</p>
+            </div>
+        </div>
+    </div>
+    @endif
 </body>
 </html>
