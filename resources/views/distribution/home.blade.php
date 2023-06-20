@@ -42,7 +42,17 @@
                             <td>{{ $value->amount_rice }}</td>
                             <td>{{ $value->notes }}</td>
                             <td>{{ $value->distributed_at }}</td>
-                            <td>{{ $value->status }}</td>
+                            <td>
+                                @if($value->status === 0)
+                                    <div class="badge badge-secondary">Not Delivered</div>
+                                @elseif($value->status === 1)
+                                    <div class="badge badge-success">Delivered</div>
+                                @elseif($value->status === 2)
+                                    <div class="badge badge-warning">Pending</div>
+                                @elseif($value->status === 3)
+                                    <div class="badge badge-danger">Cancelled</div>
+                                @endif
+                            </td>
                             <td>
                                 <form method="POST" action="{{route('distribution.destroy', $value->id)}}">
                                     {{ csrf_field() }}
