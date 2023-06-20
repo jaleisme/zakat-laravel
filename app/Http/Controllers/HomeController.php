@@ -43,6 +43,8 @@ class HomeController extends Controller
         $muzakkiCount = $resultMuzakki->nop;
         $collectedMoney = $resultMoney->collectedMoney > 0 ? $resultMoney->collectedMoney : 0;
         $collectedRice = $resultRice->collectedRice > 0 ? $resultRice->collectedRice : 0;
+        $resultDistributed->distributedMoney = $resultDistributed->distributedMoney > 0 ? $resultDistributed->distributedMoney : 0;
+        $resultDistributed->distributedRice = $resultDistributed->distributedRice > 0 ? $resultDistributed->distributedRice : 0;
         return view('home', compact(['mustahikCount', 'muzakkiCount', 'distributionCount', 'paymentCount', 'collectedMoney', 'collectedRice', 'resultDistributed']));
     }
 }

@@ -23,8 +23,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12">
+    <div class="row">
+        <div class="col-12 mt-4">
             <div class="card" style="border-radius: 32px;">
                 <div class="card-body p-0">
                     <div class="row p-0 d-flex justify-content-center align-items-center">
@@ -35,9 +35,12 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="row mb-3">
-                                    <div class="col-12">
+                                    <div class="col-8">
                                         <h4 class="font-weight-bold">Login</h4>
                                         <span>Please login with your account first.</span>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <a href="/" class="text-decoration-none text-secondary">Back</a>
                                     </div>
                                 </div>
 
