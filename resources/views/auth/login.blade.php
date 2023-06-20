@@ -29,7 +29,7 @@
                 <div class="card-body p-0">
                     <div class="row p-0 d-flex justify-content-center align-items-center">
                         <div class="col-6 bg-success" style="border-radius: 32px 0 0 32px;">
-                            <img src="{{asset('img/mobile-illustration.svg')}}" class="w-100" alt="">
+                            <img src="{{asset('img/Shield.svg')}}" class="w-100" alt="">
                         </div>
                         <div class="col-6 py-5 px-5">
                             <form method="POST" action="{{ route('login') }}">

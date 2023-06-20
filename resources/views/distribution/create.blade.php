@@ -29,11 +29,11 @@
                 </div>
                 <div class="form-group">
                     <label for="amount_money">Amount Money</label>
-                    <input required type="number" min="0" class="form-control" id="amount_money" placeholder="Money currency is rupiah" name="amount_money">
+                    <input required type="number" min="0" class="form-control" id="amount_money" placeholder="Money currency is rupiah" name="amount_money" step="any">
                 </div>
                 <div class="form-group">
                     <label for="amount_rice">Amount Rice</label>
-                    <input required type="number" min="0" class="form-control" id="amount_rice" placeholder="Weight is in Kilogram" name="amount_rice">
+                    <input required type="number" min="0" class="form-control" id="amount_rice" placeholder="Weight is in Kilogram" name="amount_rice" step="any">
                 </div>
                 <div class="form-group">
                     <label for="notes">Notes</label>

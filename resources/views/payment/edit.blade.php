@@ -64,7 +64,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="amount">Amount</label>
-                            <input required type="text" class="form-control" id="amount" placeholder="Ex. 100000 (Money) or 10 (rice in Kg)" name="amount" value="{{ $data->amount }}">
+                            <input required type="text" class="form-control" id="amount" placeholder="Ex. 100000 (Money) or 10 (rice in Kg)" name="amount" value="{{ $data->amount }}" step="any">
                             <small>Please only fill with zakat amount as the usual money number format or rice in Kg</small>
                         </div>
                     </div>
