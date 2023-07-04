@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMustahiksTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateMustahiksTable extends Migration
      */
     public function up()
     {
-        Schema::create('mustahiks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('mustahik', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('mustahik_category_id')->index('mustahik_category_id');
+            $table->string('fullname', 50);
+            $table->tinyText('address');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateMustahiksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mustahiks');
+        Schema::dropIfExists('mustahik');
     }
-}
+};
