@@ -26,25 +26,42 @@
             font-family: 'Montserrat', sans-serif !important;
             font-size: 12px !important;
         }
+        .btn-light-primary{
+            border: 1px solid #BFE3D1 !important;
+            color: #019147 !important;
+
+        }
         .bg-success{
             background-color: #019147 !important;
         }
         .text-success{
             color: #019147 !important;
         }
-        .btn-success{
+        .btn-success, .btn-primary{
             background-color: #019147 !important;
+            outline: none;
+            border: none;
         }
-        .button{
+        .button, .btn{
             border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
-            padding: 16px 24px;
+            padding: 12px 16px;
         }
-        .btn-warning, .btn-primary{
-            background-color: #FF9823 !important;
+        .btn-warning{
+            background-color: #019147 !important;
             color: #ffffff !important;
             border: 1px solid #FF9823;
+        }
+        .page-item{
+            border-radius: 2px;
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 4px;
         }
     </style>
     @yield('custom-css')

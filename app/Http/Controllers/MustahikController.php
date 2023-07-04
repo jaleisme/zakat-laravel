@@ -18,7 +18,7 @@ class MustahikController extends Controller
         $data = Mustahik::select('mustahik.*', 'mustahik_category.category_name')
             ->join('mustahik_category', 'mustahik_category.id', '=', 'mustahik.mustahik_category_id')
             ->groupBy('mustahik.id', 'mustahik.mustahik_category_id', 'mustahik.fullname', 'mustahik.address', 'mustahik_category.category_name')
-            ->get();
+            ->paginate(10);
         // dd($data);
         return view('mustahik.home', compact(['data']));
     }
