@@ -35,16 +35,21 @@ class HomeController extends Controller
         $distributionCount = count(Distribution::all());
 
         $resultMuzakki = Payment::select(DB::raw('SUM(number_of_person) as nop'))->first();
-        $resultMoney = Payment::select(DB::raw('SUM(amount) as collectedMoney'))->where('payment_type_id', '=', 5)->first();
-        $resultRice = Payment::select(DB::raw('SUM(amount) as collectedRice'))->where('payment_type_id', '=', 6)->first();
+        $resultMoney = Payment::select(DB::raw('SUM(amount) as collectedMoney'))->where('payment_type_id', '=', 1)->first();
+        $resultRice = Payment::select(DB::raw('SUM(amount) as collectedRice'))->where('payment_type_id', '=', 2)->first();
 
         $resultDistributed = Distribution::select(DB::raw('SUM(amount_money) as distributedMoney, SUM(amount_rice) as distributedRice'))->first();
 
-        $muzakkiCount = $resultMuzakki->nop;
+        $muzakkiCount = $resultMuzakki->nop > 0 ? $resultMuzakki->nop : 0;
         $collectedMoney = $resultMoney->collectedMoney > 0 ? $resultMoney->collectedMoney : 0;
         $collectedRice = $resultRice->collectedRice > 0 ? $resultRice->collectedRice : 0;
         $resultDistributed->distributedMoney = $resultDistributed->distributedMoney > 0 ? $resultDistributed->distributedMoney : 0;
         $resultDistributed->distributedRice = $resultDistributed->distributedRice > 0 ? $resultDistributed->distributedRice : 0;
-        return view('home', compact(['mustahikCount', 'muzakkiCount', 'distributionCount', 'paymentCount', 'collectedMoney', 'collectedRice', 'resultDistributed']));
+
+        $collectedMoneySum = Payment::select(DB::raw('SUM(number_of_person) as nop'))->where('payment_type_id', '=', 1)->first();
+        $collectedRiceSum = Payment::select(DB::raw('SUM(number_of_person) as nop'))->where('payment_type_id', '=', 2)->first();
+        // $resultDistributed->distributedMoney = $resultDistributed->distributedMoney > 0 ? $resultDistributed->distributedMoney : 0;
+        // $resultDistributed->distributedRice = $resultDistributed->distributedRice > 0 ? $resultDistributed->distributedRice : 0;
+        return view('home', compact(['mustahikCount', 'muzakkiCount', 'distributionCount', 'paymentCount', 'collectedMoney', 'collectedRice', 'resultDistributed', 'collectedMoneySum', 'collectedRiceSum']));
     }
 }

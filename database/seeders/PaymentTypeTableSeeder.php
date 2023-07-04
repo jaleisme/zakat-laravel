@@ -14,23 +14,23 @@ class PaymentTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('payment_type')->delete();
-        
+
         \DB::table('payment_type')->insert(array (
-            0 => 
+            0 =>
             array (
-                'id' => 5,
+                'id' => 1,
                 'payment_type_name' => 'Money',
             ),
-            1 => 
+            1 =>
             array (
-                'id' => 6,
+                'id' => 2,
                 'payment_type_name' => 'Rice',
             ),
         ));
-        
-        
+
+
     }
 }

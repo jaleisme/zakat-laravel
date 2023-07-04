@@ -14,61 +14,24 @@ class MuzakkiTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('muzakki')->delete();
-        
-        \DB::table('muzakki')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'fullname' => 'Yusuf',
-                'address' => 'Coblong',
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'fullname' => 'Jamal',
-                'address' => 'Coblong',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'fullname' => 'Farhan',
-                'address' => 'Coblong',
-            ),
-            3 => 
-            array (
-                'id' => 4,
-                'fullname' => 'Hamdan',
-                'address' => 'tanjungsari',
-            ),
-            4 => 
-            array (
-                'id' => 5,
-                'fullname' => 'James',
-                'address' => 'Coblong',
-            ),
-            5 => 
-            array (
-                'id' => 6,
-                'fullname' => 'James Bond',
-                'address' => 'Coblong',
-            ),
-            6 => 
-            array (
-                'id' => 7,
-                'fullname' => 'Ali',
-                'address' => 'Coblong',
-            ),
-            7 => 
-            array (
-                'id' => 8,
-                'fullname' => 'Difa',
-                'address' => 'Coblong',
-            ),
-        ));
-        
-        
+
+        $names = ["Difa", "Dwi", "Haikal", "Cecep", "Ali", "Yusuf", "Rahman", "Arkan", "Bagas", "Maman"];
+        $addresses = ["Kp. Bojong Seureuh No.", "Kp. Bojong Reunghas No.", "Kp. Bojong Buah No.", "Kp. Bayah No.", "Kp. Cikoneng No."];
+        $no_of_rows = 100;
+
+        for( $i=1; $i <= $no_of_rows; $i++ ){
+            $data[] = [
+                'id' => $i,
+                'fullname' => $names[rand(0,9)],
+                'address' => $addresses[rand(0,4)].rand(21,40),
+            ];
+        }
+
+        \DB::table('muzakki')->insert($data);
+
+
     }
 }

@@ -22,11 +22,11 @@ class UsersTableSeeder extends Seeder
         \DB::table('users')->insert(array (
             0 => array (
                 'id' => 1,
-                'name' => 'admin',
+                'name' => 'Oliver Sykes',
                 'email' => 'admin@admin.com',
                 'email_verified_at' => NULL,
-                'password' => bcrypt('admin'),
-                'remember_token' => 'bM6jhul191OeUycbkgAQj2oJvYYxmOJkK6za2AsF5fBSH1FuMcDLwyuRFbyR',
+                'password' => Hash::make('admin'),
+                'remember_token' => '',
                 'created_at' => '2023-05-10 04:13:05',
                 'updated_at' => '2023-05-10 04:13:05',
             ),

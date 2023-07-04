@@ -68,11 +68,11 @@
             <div class="card">
                 <span class="font-weight-bold" style="font-size: 16px;">📊 Zakat Collection</span>
                 <div class="d-flex mt-3 justify-content-between">
-                    <span>Collected Money</span>
+                    <span>Collected Money ({{ $collectedMoneySum->nop }})</span>
                     <span>Rp.{{ $collectedMoney }}</span>
                 </div>
                 <div class="d-flex mt-2 justify-content-between">
-                    <span>Collected Rice</span>
+                    <span>Collected Rice ({{ $collectedRiceSum->nop }})</span>
                     <span>{{ $collectedRice }} Kg</span>
                 </div>
             </div>

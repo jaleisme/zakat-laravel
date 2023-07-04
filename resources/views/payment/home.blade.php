@@ -29,7 +29,7 @@
                     <tbody>
                         @forelse($data as $n => $value)
                         <tr>
-                            <th scope="row">{{ $n+1 }}</th>
+                            <th scope="row">{{ $value->id }}</th>
                             <td>{{ $value->fullname }}</td>
                             <td>{{ $value->payment_type_name }}</td>
                             @if($value->payment_type_name == "Rice" )
