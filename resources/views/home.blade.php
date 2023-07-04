@@ -68,25 +68,61 @@
             <div class="card">
                 <span class="font-weight-bold" style="font-size: 16px;">📊 Zakat Collection</span>
                 <div class="d-flex mt-3 justify-content-between">
-                    <span>Collected Money ({{ $collectedMoneySum->nop }})</span>
+                    <span>Collected Money ({{ $collectedMoneySum->nop }} People)</span>
                     <span>Rp.{{ $collectedMoney }}</span>
                 </div>
                 <div class="d-flex mt-2 justify-content-between">
-                    <span>Collected Rice ({{ $collectedRiceSum->nop }})</span>
+                    <span>Collected Rice ({{ $collectedRiceSum->nop }} People)</span>
                     <span>{{ $collectedRice }} Kg</span>
                 </div>
+
+                @foreach($paymentByAmil as $data)
+                <div class="d-flex mt-2 justify-content-between">
+                    <span>Collected by {{ $data['amil_name'] }}</span>
+                    <span>{{ $data['count'] }} People</span>
+                </div>
+                @endforeach
             </div>
         </div>
         <div class="col-6">
             <div class="card">
-                <span class="font-weight-bold" style="font-size: 16px;">✍🏻 Zakat Distribution</span>
-                <div class="d-flex mt-3 justify-content-between">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="font-weight-bold" style="font-size: 16px;">✍🏻 Zakat Distribution</span>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button class="w-20 btn-sm btn-primary" style="font-size: 12px; border-radius: 4px;">
+                            Delivered <span class="ml-1 badge badge-light">{{ $delivered }}</span>
+                        </button>
+
+                        <button class="w-20 btn-sm btn-secondary" style="font-size: 12px; border-radius: 4px;">
+                            Not Delivered <span class="ml-1 badge badge-light">{{ $notDelivered }}</span>
+                        </button>
+
+                        <button class="w-20 btn-sm btn-warning" style="font-size: 12px; border-radius: 4px;">
+                            Pending <span class="ml-1 badge badge-light">{{ $pending }}</span>
+                        </button>
+
+                        <button class="w-20 btn-sm btn-danger" style="font-size: 12px; border-radius: 4px;">
+                            Cancelled <span class="ml-1 badge badge-light">{{ $cancelled }}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex mt-2 justify-content-between">
                     <span>Distributed Money</span>
-                    <span>Rp.{{ $resultDistributed->distributedMoney }}</span>
+                    <span class="text-success">Rp.{{ $resultDistributed->distributedMoney }}</span>
                 </div>
                 <div class="d-flex mt-2 justify-content-between">
                     <span>Distributed Rice</span>
-                    <span>{{ $resultDistributed->distributedRice }} Kg</span>
+                    <span class="text-success">{{ $resultDistributed->distributedRice }} Kg</span>
+                </div>
+                <div class="d-flex mt-2 justify-content-between">
+                    <span>Undistributed Money</span>
+                    <span class="text-danger">Rp.{{ $resultUndistributed->distributedMoney }}</span>
+                </div>
+                <div class="d-flex mt-2 justify-content-between">
+                    <span>Undistributed Rice</span>
+                    <span class="text-danger">{{ $resultUndistributed->distributedRice }} Kg</span>
                 </div>
             </div>
         </div>
