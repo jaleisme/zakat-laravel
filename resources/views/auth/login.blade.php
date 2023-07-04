@@ -40,7 +40,7 @@
                                         <span>Please login with your account first.</span>
                                     </div>
                                     <div class="col-4 text-right">
-                                        <a href="/" class="text-decoration-none text-secondary">Back</a>
+                                        <a href="/" class="text-secondary">Back to Landing</a>
                                     </div>
                                 </div>
 
@@ -94,10 +94,6 @@
                                         <button type="submit" class="button btn btn-block btn-primary">
                                             {{ __('Login') }}
                                         </button>
-                                        <div class="text-center mt-3">
-                                            If you doesn't have any account,
-                                            <a href="/register" class="text-decoration-none text-success">Click Here</a>
-                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -108,60 +104,4 @@
         </div>
     </div>
 </div>
-<!-- <div class="container w-100">
-    <form class="form-signin" method="POST" action="{{ route('login') }}">
-        @csrf
-        <div class="bg-login">
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Ex. johndoe@gmail.com">
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6 offset-md-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-0">
-                <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Login') }}
-                    </button>
-
-                    @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </form>
-</div> -->
 @endsection

@@ -69,7 +69,11 @@
 <body>
     @if((new \Jenssegers\Agent\Agent())->isDesktop())
     <div id="app">
-        @if(Request::url() != url('/login'))
+        @if(Request::url() == url('/login'))
+        <div></div>
+        @elseif(Request::url() == url('/register'))
+        <div></div>
+        @else
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -119,8 +123,9 @@
                                 <a class="nav-link dropdown-toggle text-capitalize" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <!-- <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div> -->
+                                    <a class="dropdown-item" href="#">Another action</a> -->
+                                    <a class="dropdown-item" href="{{ route('account-settings') }}">Account Settings</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>

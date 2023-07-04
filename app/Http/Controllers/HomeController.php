@@ -9,7 +9,9 @@ use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -74,5 +76,22 @@ class HomeController extends Controller
         }
 
         return view('home', compact(['mustahikCount', 'muzakkiCount', 'distributionCount', 'paymentCount', 'collectedMoney', 'collectedRice', 'resultDistributed', 'collectedMoneySum', 'collectedRiceSum', 'resultUndistributed', 'notDelivered', 'delivered', 'pending', 'cancelled', 'paymentByAmil']));
+    }
+
+    public function accountSettings(){
+        $user = User::findOrFail(Auth::user()->id);
+        return view('account-settings', compact(['user']));
+    }
+
+    public function changeAccountSettings(Request $request){
+        $user = User::findOrFail(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $rules = ['email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:5', 'confirmed']];
+        if($this->validate($request, $rules)){
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        return redirect('/home')->with('alert', 'Account settings updated!');
     }
 }

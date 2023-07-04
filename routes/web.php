@@ -23,23 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/account-settings', [App\Http\Controllers\HomeController::class, 'accountSettings'])->name('account-settings');
+Route::post('/change-account-settings', [App\Http\Controllers\HomeController::class, 'changeAccountSettings'])->name('change-account-settings');
 
 Route::resource('/mustahik', MustahikController::class)->middleware('auth');
 Route::resource('/mustahik-category', MustahikCategoryController::class)->middleware('auth');
 Route::resource('/payment-type', PaymentTypeController::class)->middleware('auth');
 Route::resource('/payment', PaymentController::class)->middleware('auth');
 Route::resource('/distribution', DistributionController::class)->middleware('auth');
-
-// Payment Type
-// Route::get('/payment-type',[PaymentTypeController::class, 'payment_type'])->name('payment-type');
-
-// Route::get('/tambahdatapymenttype',[PaymentTypeController::class, 'tambahdatapymenttype'])->name('tambahdatapymenttype');
-// Route::post('/insertdatapymenttype',[PaymentTypeController::class, 'insertdatapymenttype'])->name('insertdatapymenttype');
-
-// Route::get('/tampildatapymenttype/{id}',[PaymentTypeController::class, 'tampildatapymenttype'])->name('tampildatapymenttype');
-// Route::post('/editdatapymenttype/{id}',[PaymentTypeController::class, 'editdatapymenttype'])->name('editdatapymenttype');
-
-// Route::get('/deletedatapymenttype/{id}',[PaymentTypeController::class, 'deletedatapymenttype'])->name('deletedatapymenttype');
