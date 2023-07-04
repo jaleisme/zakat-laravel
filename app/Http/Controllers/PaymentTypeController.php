@@ -15,7 +15,7 @@ class PaymentTypeController extends Controller
      */
     public function index()
     {
-        $data = Payment_type::all();
+        $data = Payment_type::paginate(10);
         return view('payment-type.home', compact(['data']));
     }
 

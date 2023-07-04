@@ -22,7 +22,7 @@ class PaymentController extends Controller
         ->join('payment_type', 'payment_type.id', '=', 'payment.payment_type_id')
         ->join('users', 'users.id', '=', 'payment.amil_id')
         ->groupBy('payment.id', 'payment.muzakki_id', 'payment.payment_type_id', 'payment.amil_id', 'payment.amount', 'payment.number_of_person', 'muzakki.fullname', 'muzakki.address', 'payment_type.payment_type_name', 'users.name')
-        ->get();
+        ->paginate(10);
         return view('payment.home', compact(['data']));
     }
 

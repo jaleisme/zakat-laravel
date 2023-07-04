@@ -5,22 +5,16 @@
     <div class="row">
         <div class="col-12 col-md-6">
             <h3 class="font-weight-bold">Payment</h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb p-0 bg-white">
-                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Payment</li>
-                </ol>
-            </nav>
         </div>
         <div class="col-12 col-md-6">
         <a href="{{ route('payment.create') }}" class="btn btn-primary d-block d-md-inline-block float-md-right mt-3 mb-5 my-md-0">Add Record</a>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
             <div class="table-responsive">
-                <table class="table text-center">
+                <table class="table table-bordered text-center">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -33,12 +27,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $n => $value)
+                        @forelse($data as $n => $value)
                         <tr>
                             <th scope="row">{{ $n+1 }}</th>
                             <td>{{ $value->fullname }}</td>
                             <td>{{ $value->payment_type_name }}</td>
-                            <td>{{ $value->amount }}</td>
+                            @if($value->payment_type_name == "Rice" )
+                            <td>{{ $value->amount }} Kg</td>
+                            @else
+                            <td>Rp.{{ $value->amount }}</td>
+                            @endif
                             <td>{{ $value->number_of_person }}</td>
                             <td>{{ $value->name }}</td>
                             <td>
@@ -47,16 +45,21 @@
                                     {{ method_field('DELETE') }}
 
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-danger delete-user" value="Delete">
-                                        <a href="{{route('payment.edit', $value->id)}}" class="btn btn-info">Edit</a>
+                                    <button type="submit" class="btn btn-danger delete-user mr-2"><img style="width: 18px;" src="{{ asset('/img/trash.svg') }}" alt=""></button>
+                                        <a href="{{route('payment.edit', $value->id)}}" class="btn btn-info"><img style="width: 18px;" src="{{ asset('/img/edit.svg') }}" alt=""></a>
                                     </div>
                                 </form>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <span>There's nothing here.</span>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="col-12">
+            {!! $data->links('layouts.pagination') !!}
         </div>
     </div>
 </div>
