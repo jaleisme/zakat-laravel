@@ -26,7 +26,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Category Name</th>
                             <th scope="col" style="width: 55%;">Description</th>
-                            <th scope="col">Percentage (used: {{$usedPercentage}}%)</th>
+                            <!-- <th scope="col">Percentage (used: {{$usedPercentage}}%)</th> -->
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -36,7 +36,7 @@
                             <th scope="row">{{ $n+1 }}</th>
                             <td>{{ $value->category_name }}</td>
                             <td>{{ $value->description }}</td>
-                            <td>{{ $value->percentage }}%</td>
+                            <!-- <td>{{ $value->percentage }}%</td> -->
                             <td>
                                 <form method="POST" action="{{route('mustahik-category.destroy', $value->id)}}">
                                     {{ csrf_field() }}
