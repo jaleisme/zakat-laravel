@@ -7,6 +7,10 @@ use App\Http\Controllers\MustahikCategoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\UserController;
+use App\Models\Distribution;
+use App\Models\Mustahik;
+use App\Models\Muzakki;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -21,7 +25,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $mustahikCount = count(Mustahik::all()) > 0 ? count(Mustahik::all()) : 0;
+    $muzakkiCount = count(Muzakki::all()) > 0 ? count(Muzakki::all()) : 0;
+    $paymentCount = count(Payment::all()) > 0 ? count(Payment::all()) : 0;
+    $distributionCount = count(Distribution::where('status', '=', 1)->get()) > 0 ? count(Distribution::where('status', '=', 1)->get()) : 0;
+    return view('welcome', compact(['mustahikCount', 'muzakkiCount', 'paymentCount', 'distributionCount']));
 });
 
 Auth::routes(['register' => false]);
