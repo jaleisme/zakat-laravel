@@ -95,7 +95,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="button btn btn-warning" href="{{ route('login') }}" style="font-size: 12px;">Login | Register</a>
+                                    <a class="button btn btn-warning" href="{{ route('login') }}" style="font-size: 12px;">Login</a>
                                 </li>
                             @endif
                         @else
@@ -125,6 +125,9 @@
                                     <!-- <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Another action</a> -->
                                     <a class="dropdown-item" href="{{ route('account-settings') }}">Account Settings</a>
+                                    @if(Auth::user()->id == 1)
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">Users</a>
+                                    @endif
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
