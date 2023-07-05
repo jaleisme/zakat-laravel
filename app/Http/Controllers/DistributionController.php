@@ -18,7 +18,7 @@ class DistributionController extends Controller
         $data = Distribution::select('distribution.*', 'mustahik.fullname')
             ->join('mustahik', 'mustahik.id', '=', 'distribution.mustahik_id')
             ->groupBy('distribution.id', 'mustahik_id', 'amount_money', 'amount_rice', 'notes', 'distributed_at', 'status', 'mustahik.fullname')
-            ->get();
+            ->paginate(10);
         // dd($data);
         return view('distribution.home', compact(['data']));
     }

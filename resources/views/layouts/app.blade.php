@@ -26,25 +26,42 @@
             font-family: 'Montserrat', sans-serif !important;
             font-size: 12px !important;
         }
+        .btn-light-primary{
+            border: 1px solid #BFE3D1 !important;
+            color: #019147 !important;
+
+        }
         .bg-success{
             background-color: #019147 !important;
         }
         .text-success{
             color: #019147 !important;
         }
-        .btn-success{
+        .btn-success, .btn-primary{
             background-color: #019147 !important;
+            outline: none;
+            border: none;
         }
-        .button{
+        .button, .btn{
             border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
-            padding: 16px 24px;
+            padding: 12px 16px;
         }
-        .btn-warning, .btn-primary{
+        .btn-warning{
             background-color: #FF9823 !important;
             color: #ffffff !important;
             border: 1px solid #FF9823;
+        }
+        .page-item{
+            border-radius: 2px;
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 4px;
         }
     </style>
     @yield('custom-css')
@@ -52,7 +69,11 @@
 <body>
     @if((new \Jenssegers\Agent\Agent())->isDesktop())
     <div id="app">
-        @if(Request::url() != url('/login'))
+        @if(Request::url() == url('/login'))
+        <div></div>
+        @elseif(Request::url() == url('/register'))
+        <div></div>
+        @else
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,7 +95,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="button btn btn-warning" href="{{ route('login') }}" style="font-size: 12px;">Login | Register</a>
+                                    <a class="button btn btn-warning" href="{{ route('login') }}" style="font-size: 12px;">Login</a>
                                 </li>
                             @endif
                         @else
@@ -102,8 +123,12 @@
                                 <a class="nav-link dropdown-toggle text-capitalize" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <!-- <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div> -->
+                                    <a class="dropdown-item" href="#">Another action</a> -->
+                                    <a class="dropdown-item" href="{{ route('account-settings') }}">Account Settings</a>
+                                    @if(Auth::user()->id == 1)
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">Users</a>
+                                    @endif
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>

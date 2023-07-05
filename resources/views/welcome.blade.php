@@ -75,48 +75,49 @@
     </div>
 
     <!-- Zakat Detail -->
-    <div class="card" style="margin: 48px 0px;">
+    <div class="card border-success" style="margin: 48px 0px;">
         <div class="row" style="margin-bottom: 24px;">
-            <div class="col-6 pl-0">
+            <div class="col-12 px-0 d-flex justify-content-between">
                 <h2 class="font-weight-bold">Haven't heard about Zakat Al-Fitr?</h2>
-                <p class="text-justify" style="margin-bottom: 16px;">"Those who believe, do righteous deeds, establish prayer, and give zakah, will have their reward with their Lord; and they will have no fear, nor will they grieve." <br>Al-Baqarah : 277.</p>
-                <p class="text-justify" style="margin-bottom: 16px;">As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth to help the needy. It is a mandatory charitable contribution, often considered to be a tax. The payment and disputes on zakat have played a major role in the history of Islam, notably during the Ridda wars. Zakat on wealth is based on the value of all of one's possessions. It is customarily 2.5% (or 1/4) of a Muslim's total savings and wealth above a minimum amount known as nisab each lunar year, but Islamic scholars differ on how much nisab is and other aspects of zakat. According to Islamic doctrine, the collected amount should be paid to the poor and the needy, Zakat collectors, orphans, widows, those to be freed from slavery, old-aged peoples who can't work to feed themselves, those in debt, in the cause of Allah and to benefit the stranded traveller.</p>
                 <a href="https://baznas.go.id/zakat" class="button btn btn-warning">Read More</a>
             </div>
-            <div class="col-6 pr-0">
-                <div class="card w-100 h-100 p-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <h5 class="font-weight-bold">Zakat Calculator🧮</h5>
-                            <p>If my condition is ...</p>
+        </div>
+        <div class="row" style="margin-bottom: 24px;">
+            <div class="col-12 px-0">
+                <p class="text-justify" style="margin-bottom: 16px;">"Those who believe, do righteous deeds, establish prayer, and give zakah, will have their reward with their Lord; and they will have no fear, nor will they grieve." <br>Al-Baqarah : 277.</p>
+                <p class="text-justify" style="margin-bottom: 16px;">As one of the Five Pillars of Islam, zakat is a religious duty for all Muslims who meet the necessary criteria of wealth to help the needy. It is a mandatory charitable contribution, often considered to be a tax. The payment and disputes on zakat have played a major role in the history of Islam, notably during the Ridda wars. Zakat on wealth is based on the value of all of one's possessions. It is customarily 2.5% (or 1/4) of a Muslim's total savings and wealth above a minimum amount known as nisab each lunar year, but Islamic scholars differ on how much nisab is and other aspects of zakat. According to Islamic doctrine, the collected amount should be paid to the poor and the needy, Zakat collectors, orphans, widows, those to be freed from slavery, old-aged peoples who can't work to feed themselves, those in debt, in the cause of Allah and to benefit the stranded traveller.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 px-0">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card border-success">
+                            <h2 class="font-weight-bold text-center text-dark">{{ $mustahikCount }}</h2>
+                            <span class="font-weight-bold text-center" style="font-size: 16px;">Mustahik<br>Recorded</span>
                         </div>
                     </div>
-                    <div class="row w-100 mb-3">
-                        <div class="col-6">
-                            <input class="sp-input w-100" type="number" min="0" placeholder="Number of Person" id="nopInput">
-                        </div>
-                        <div class="col-6">
-                            <input class="sp-input w-100" type="number" min="0" placeholder="My rice price in rupiah" id="ricePriceInput">
+                    <div class="col-3">
+                        <div class="card border-success">
+                            <h2 class="font-weight-bold text-center text-dark">{{ $muzakkiCount }}</h2>
+                            <span class="font-weight-bold text-center" style="font-size: 16px;">Muzakki<br>Paid</span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>then i should pay ...</p>
+                    <div class="col-3">
+                        <div class="card border-success">
+                            <h2 class="font-weight-bold text-center text-dark">{{ $paymentCount }}</h2>
+                            <span class="font-weight-bold text-center" style="font-size: 16px;">Zakat<br>Collected</span>
                         </div>
                     </div>
-                    <div class="row w-100 mb-3">
-                        <div class="col-6">
-                            <input class="sp-input w-100" type="text" min="0" placeholder="Money to pay" id="moneyInput" disabled>
-                        </div>
-                        <div class="col-6">
-                            <input class="sp-input w-100" type="text" min="0" placeholder="Rice to give" id="riceInput" disabled>
+                    <div class="col-3">
+                        <div class="card border-success">
+                            <h2 class="font-weight-bold text-center text-dark">{{ $distributionCount }}</h2>
+                            <span class="font-weight-bold text-center" style="font-size: 16px;">Zakat<br>Distributed</span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <small>P.s. You don't have to pay BOTH in money and in rice. You should consider choosing one.</small>
-                        </div>
-                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"></div>
                 </div>
             </div>
         </div>
@@ -157,6 +158,46 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="card border-success" style="margin-bottom: 48px;">
+        <div class="row">
+            <div class="col-12 pr-0">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="font-weight-bold">Zakat Calculator🧮</h5>
+                        <p>If my condition is ...</p>
+                    </div>
+                </div>
+                <div class="row w-100 mb-3">
+                    <div class="col-6">
+                        <input class="sp-input w-100" type="number" min="0" placeholder="Number of Person" id="nopInput">
+                    </div>
+                    <div class="col-6">
+                        <input class="sp-input w-100" type="number" min="0" placeholder="My rice price in rupiah" id="ricePriceInput">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p>then i should pay ...</p>
+                    </div>
+                </div>
+                <div class="row w-100 mb-3">
+                    <div class="col-6">
+                        <input class="sp-input w-100" type="text" min="0" placeholder="Money to pay" id="moneyInput" disabled>
+                    </div>
+                    <div class="col-6">
+                        <input class="sp-input w-100" type="text" min="0" placeholder="Rice to give" id="riceInput" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <small>P.s. You don't have to pay BOTH in money and in rice. You should consider choosing one.</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

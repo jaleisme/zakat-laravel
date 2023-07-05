@@ -14,7 +14,7 @@ class MustahikCategoryController extends Controller
      */
     public function index()
     {
-        $data = MustahikCategory::all();
+        $data = MustahikCategory::paginate(10);
         $usedPercentage = $data->sum('percentage');
         return view('mustahik-category.home', compact(['data', 'usedPercentage']));
     }
